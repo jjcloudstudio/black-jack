@@ -1,0 +1,31 @@
+stages:
+  - documentation
+  - build
+  - quality
+
+build-game:
+   stage: build
+   script:
+      - make cardGame
+   artifacts:
+      paths:
+         - cardGame
+
+staticAnalysis:
+   stage: quality
+   script:
+      - make static
+
+style:
+   stage: quality
+   script:
+      - make style
+
+docs:
+   stage: documentation
+   script:
+      - make docs
+   artifacts:
+      paths:
+         - docs
+      expire_in: 14 days
