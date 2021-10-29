@@ -6,10 +6,10 @@ stages:
 build-game:
    stage: build
    script:
-      - make cardGame
+      - make blackjack
    artifacts:
       paths:
-         - cardGame
+         - blackjack
 
 staticAnalysis:
    stage: quality
