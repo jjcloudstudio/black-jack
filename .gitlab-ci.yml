@@ -1,15 +1,35 @@
 stages:
   - documentation
   - build
+  - test
   - quality
 
 build-game:
    stage: build
    script:
-      - make blackjack
+      - make cardGame
+   
+build-tests:
+   stage: build
+   script:
+      - make testGame
    artifacts:
       paths:
-         - blackjack
+         - testGame
+
+coverage:
+   stage: test
+   script:
+      - make coverage
+   artifacts:
+      paths:
+         - coverage
+      expire_in: 14 days
+
+memcheckTest:
+   stage: quality
+   script:
+      - make memcheck
 
 staticAnalysis:
    stage: quality
