@@ -13,9 +13,6 @@ build-tests:
    stage: build
    script:
       - make testGame
-   artifacts:
-      paths:
-         - testGame
 
 coverage:
    stage: test
