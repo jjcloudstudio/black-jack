@@ -21,6 +21,7 @@ STYLE_CHECK = cpplint.py
 
 STATIC_RESULTS = CppCheckResults.xml
 
+PROGRAM_DIR = black-jack
 PROGRAM = cardGame
 PROGRAM_TEST = testGame
 GCOV = gcov
@@ -50,7 +51,7 @@ coverage: $(PROGRAM_TEST)
 	# Determine code coverage
 	$(LCOV) --capture --gcov-tool $(GCOV) --directory . --output-file $(COVERAGE_RESULTS) --rc lcov_branch_coverage=1
 	# Only show code coverage for the source code files (not library files)
-	$(LCOV) --extract $(COVERAGE_RESULTS) */*/$(SRC_DIR)/* -o $(COVERAGE_RESULTS)
+	$(LCOV) --extract $(COVERAGE_RESULTS) */$(PROGRAM_DIR)/$(SRC_DIR)/* -o $(COVERAGE_RESULTS)
 	#Generate the HTML reports
 	genhtml $(COVERAGE_RESULTS) --output-directory $(COVERAGE_DIR)
 	#Remove all of the generated files from gcov
