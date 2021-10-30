@@ -22,6 +22,7 @@ coverage:
       paths:
          - coverage
       expire_in: 14 days
+   allow_failure: true
 
 memcheckTest:
    stage: quality
